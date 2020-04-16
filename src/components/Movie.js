@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+//importar este compoente que nos ayuda a pasar de url a otra
+import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 
 class movieComponet extends Component {
@@ -11,7 +13,7 @@ class movieComponet extends Component {
     render () {
         const { id, poster, title, year } = this.props
         return (
-            <a href={`?id=${id}`} className="card">
+            <Link to={`/detail/${id}`} className="card">
                 <div className="card-image">
                 <figure className="image ">
                     <img
@@ -28,7 +30,7 @@ class movieComponet extends Component {
                     </div>
                     </div>
                 </div>
-            </a>
+            </Link>
         );
     }
 

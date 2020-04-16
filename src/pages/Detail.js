@@ -7,7 +7,13 @@ const API_KEY  = '2fa28908'
 
 class detailComponent extends Component {
     static propTypes = {
-        id: propTypes.string
+        //ya no recibe props sino url, shape recibe los parametros de la url
+        match: propTypes.shape({
+            params: propTypes.object,
+            isExact: propTypes.bool,
+            path: propTypes.string,
+            url: propTypes.string
+        })
     }
 
     state = { movie: {} }
@@ -28,8 +34,9 @@ class detailComponent extends Component {
 
     //renderiza el componente de _fetchMovie
     componentDidMount () {
-        const { id } = this.props
-        this._fetchMovie({id})
+        console.log(this.props)
+        const { movieId } = this.props.match.params
+        this._fetchMovie({id: movieId})
     }
 
     render () {
@@ -38,7 +45,7 @@ class detailComponent extends Component {
             <div>
                 <button onClick={this._goBack}>Volver</button>
                 <h1>{Title}</h1>
-                <img src={Poster} />
+                <img src={Poster} />  
                 <h3>{Actors}</h3>
                 <span>{Metascore}</span>
                 <p>{Plot}</p>

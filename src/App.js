@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+//importar los dos compoentes para usar el enrutado
+import { Switch, Route } from 'react-router-dom';
 import Details from './pages/Detail';
 import Home from './pages/Home'
 import './App.css';
@@ -7,19 +9,16 @@ import 'bulma/css/bulma.css';
 class App extends Component {
 
   render() {
-    //se declaran dos constantes para que nos rediriga a la url que seleccionamos de la movie
-    const url = new URL(document.location)
-    const page = url.searchParams.has('id')
-      ? <Details id={url.searchParams.get('id')} />
-      : <Home />
-
     return (
       <div className="App">
-        {page}
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path='/detail/:movieId' component={Details} />
+        </Switch>
       </div>
     );
 
-  }
+  }   
 }
 
 export default App;
