@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 //importar los dos compoentes para usar el enrutado
 import { Switch, Route } from 'react-router-dom';
 import Details from './pages/Detail';
-import Home from './pages/Home'
+import Home from './pages/Home';
+import NotFoundComponent from './pages/NotFound';
 import './App.css';
 import 'bulma/css/bulma.css';
 
@@ -14,6 +15,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/detail/:movieId' component={Details} />
+          <Route component={NotFoundComponent} />
         </Switch>
       </div>
     );

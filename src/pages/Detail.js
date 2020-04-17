@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
+import ButtonBack from '../components/ButtonBackHome';
 
 
 //hacemos una constante con el parametro de la api que recivimos
@@ -28,10 +29,6 @@ class detailComponent extends Component {
         })
     }
 
-    _goBack () {
-        window.history.back()
-    }
-
     //renderiza el componente de _fetchMovie
     componentDidMount () {
         console.log(this.props)
@@ -43,7 +40,7 @@ class detailComponent extends Component {
         const { Title, Poster, Actors, Metascore, Plot } = this.state.movie
         return (
             <div>
-                <button onClick={this._goBack}>Volver</button>
+                <ButtonBack />
                 <h1>{Title}</h1>
                 <img src={Poster} />  
                 <h3>{Actors}</h3>
